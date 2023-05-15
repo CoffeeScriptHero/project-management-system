@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SQL-скрипт для створення на початкового наповнення бази даних | Система управління проектами</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/project-management-system/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="description" content="Лабораторні роботи з дисципліни &quot;Організація баз даних&quot;">
+    
+    <link rel="preload" href="/project-management-system/assets/css/0.styles.602abbc5.css" as="style"><link rel="preload" href="/project-management-system/assets/js/app.cf3ea82a.js" as="script"><link rel="preload" href="/project-management-system/assets/js/2.d83ff1df.js" as="script"><link rel="preload" href="/project-management-system/assets/js/28.8d1db9b6.js" as="script"><link rel="prefetch" href="/project-management-system/assets/js/10.b8ce7d42.js"><link rel="prefetch" href="/project-management-system/assets/js/11.a1e0f383.js"><link rel="prefetch" href="/project-management-system/assets/js/12.1984d552.js"><link rel="prefetch" href="/project-management-system/assets/js/13.3befd5c8.js"><link rel="prefetch" href="/project-management-system/assets/js/14.db6e81a7.js"><link rel="prefetch" href="/project-management-system/assets/js/15.25d3ee6a.js"><link rel="prefetch" href="/project-management-system/assets/js/16.1056a05d.js"><link rel="prefetch" href="/project-management-system/assets/js/17.86e4a962.js"><link rel="prefetch" href="/project-management-system/assets/js/18.247c9909.js"><link rel="prefetch" href="/project-management-system/assets/js/19.525ffe5f.js"><link rel="prefetch" href="/project-management-system/assets/js/20.232b7e56.js"><link rel="prefetch" href="/project-management-system/assets/js/21.26900195.js"><link rel="prefetch" href="/project-management-system/assets/js/22.1050fad7.js"><link rel="prefetch" href="/project-management-system/assets/js/23.dcfc66f5.js"><link rel="prefetch" href="/project-management-system/assets/js/24.bc2a09b8.js"><link rel="prefetch" href="/project-management-system/assets/js/25.0f6dcb63.js"><link rel="prefetch" href="/project-management-system/assets/js/26.b70721ed.js"><link rel="prefetch" href="/project-management-system/assets/js/27.2b93d1b0.js"><link rel="prefetch" href="/project-management-system/assets/js/29.1410a4ef.js"><link rel="prefetch" href="/project-management-system/assets/js/3.394b8d49.js"><link rel="prefetch" href="/project-management-system/assets/js/30.ad4fbbe6.js"><link rel="prefetch" href="/project-management-system/assets/js/31.eefec2aa.js"><link rel="prefetch" href="/project-management-system/assets/js/32.e5ba5eb0.js"><link rel="prefetch" href="/project-management-system/assets/js/33.82e364c1.js"><link rel="prefetch" href="/project-management-system/assets/js/4.ab5c337e.js"><link rel="prefetch" href="/project-management-system/assets/js/5.6477de70.js"><link rel="prefetch" href="/project-management-system/assets/js/6.f92c5463.js"><link rel="prefetch" href="/project-management-system/assets/js/7.a382f32d.js"><link rel="prefetch" href="/project-management-system/assets/js/8.baf0412c.js"><link rel="prefetch" href="/project-management-system/assets/js/9.cf315243.js">
+    <link rel="stylesheet" href="/project-management-system/assets/css/0.styles.602abbc5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/project-management-system/" class="home-link router-link-active"><!----> <span class="site-name">Система управління проектами</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/project-management-system/" class="nav-link">
+  Початок
+</a></div> <a href="https://github.com/CoffeeScriptHero/project-management-system" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/project-management-system/" class="nav-link">
+  Початок
+</a></div> <a href="https://github.com/CoffeeScriptHero/project-management-system" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/project-management-system/intro/" class="sidebar-link">Вступ</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/project-management-system/requirements/" class="sidebar-heading clickable"><span>Розроблення загальних вимог до системи</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/project-management-system/use cases/" class="sidebar-heading clickable"><span>Розроблення вимог до функціональности системи</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/project-management-system/design/" class="sidebar-heading clickable"><span>Проектування інформаційного забезпечення</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/project-management-system/software/" class="sidebar-heading clickable router-link-active open"><span>Реалізація інформаційного та програмного забезпечення</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/project-management-system/software/sql-script.html" aria-current="page" class="active sidebar-link">SQL-скрипт для створення на початкового наповнення бази даних</a></li><li><a href="/project-management-system/software/RESTfull.html" class="sidebar-link">RESTfull сервіс для управління даними</a></li></ul></section></li><li><a href="/project-management-system/test/" class="sidebar-link">Тестування працездатності системи</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/project-management-system/test/#_1-список-всіх-юзерів" class="sidebar-link">1.Список всіх юзерів</a></li><li class="sidebar-sub-header"><a href="/project-management-system/test/#_2-1-додавання-нового-юзера-post" class="sidebar-link">2.1 Додавання нового юзера (POST)</a></li><li class="sidebar-sub-header"><a href="/project-management-system/test/#_2-2-додавання-нового-адміну-post" class="sidebar-link">2.2 Додавання нового адміну (POST)</a></li><li class="sidebar-sub-header"><a href="/project-management-system/test/#_2-3-перевірка-додавань-post" class="sidebar-link">2.3 Перевірка додавань (POST)</a></li><li class="sidebar-sub-header"><a href="/project-management-system/test/#_2-4-передача-не-всіх-потрібних-данних-post" class="sidebar-link">2.4 Передача не всіх потрібних данних (POST)</a></li><li class="sidebar-sub-header"><a href="/project-management-system/test/#_3-1-пошук-юзеру-по-id-get" class="sidebar-link">3.1 Пошук юзеру по id (GET)</a></li><li class="sidebar-sub-header"><a href="/project-management-system/test/#_3-2-пошук-неіснуючого-юзеру-по-id-get" class="sidebar-link">3.2 Пошук неіснуючого юзеру по id (GET)</a></li><li class="sidebar-sub-header"><a href="/project-management-system/test/#_4-1-оновлення-аккаунта-put" class="sidebar-link">4.1 Оновлення аккаунта (PUT)</a></li><li class="sidebar-sub-header"><a href="/project-management-system/test/#_4-2-перевірка-оновлення-аккаунта-put" class="sidebar-link">4.2 Перевірка оновлення аккаунта (PUT)</a></li><li class="sidebar-sub-header"><a href="/project-management-system/test/#_4-3-спроба-змінити-неіснуючии-аккаунт-put" class="sidebar-link">4.3 Спроба змінити неіснуючий аккаунт (PUT)</a></li><li class="sidebar-sub-header"><a href="/project-management-system/test/#_5-1-видалення-юзера-delete" class="sidebar-link">5.1 Видалення юзера (DELETE)</a></li><li class="sidebar-sub-header"><a href="/project-management-system/test/#_5-2-перевірка-видалення-delete" class="sidebar-link">5.2 Перевірка видалення (DELETE)</a></li><li class="sidebar-sub-header"><a href="/project-management-system/test/#_5-3-спроба-видалити-неіснуючии-аккаунт-delete" class="sidebar-link">5.3 Спроба видалити неіснуючий аккаунт (DELETE)</a></li></ul></li><li><a href="/project-management-system/conclusion/" class="sidebar-link">Висновки</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="sql-скрипт-для-створення-на-початкового-наповнення-бази-даних"><a href="#sql-скрипт-для-створення-на-початкового-наповнення-бази-даних" class="header-anchor">#</a> SQL-скрипт для створення на початкового наповнення бази даних</h1> <div class="language- extra-class"><pre class="language-text"><code>SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `mydb` ;
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Project`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Project` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Project` (
+  `projectid` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(180) NULL,
+  PRIMARY KEY (`projectid`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Roletype`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Roletype` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Roletype` (
+  `role` INT NOT NULL,
+  `role_name` VARCHAR(45) NOT NULL DEFAULT 'user',
+  PRIMARY KEY (`role`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Profile`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Profile` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Profile` (
+  `userid` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `pfp` VARCHAR(45) NULL,
+  `Roletype_role` INT NULL,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  PRIMARY KEY (`userid`),
+  UNIQUE INDEX `user_id_UNIQUE` (`userid` ASC) VISIBLE,
+  INDEX `role_idx` (`Roletype_role` ASC) VISIBLE,
+  CONSTRAINT `role`
+    FOREIGN KEY (`Roletype_role`)
+    REFERENCES `mydb`.`Roletype` (`role`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Chat`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Chat` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Chat` (
+  `chatid` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `message` VARCHAR(180) NULL,
+  `tittle` VARCHAR(180) NOT NULL,
+  PRIMARY KEY (`chatid`),
+  UNIQUE INDEX `chatid_UNIQUE` (`chatid` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Statustype`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Statustype` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Statustype` (
+  `status` INT NOT NULL DEFAULT 3,
+  `statusname` VARCHAR(45) NOT NULL DEFAULT 'InProgress',
+  PRIMARY KEY (`status`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Support`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Support` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Support` (
+  `chatid` INT NOT NULL,
+  `userid` INT NOT NULL,
+  `tittle` VARCHAR(180) NOT NULL,
+  `description` VARCHAR(180) NULL,
+  `Statustype_status` INT NOT NULL DEFAULT 3,
+  UNIQUE INDEX `chatid_UNIQUE` (`chatid` ASC) VISIBLE,
+  INDEX `userid_idx` (`userid` ASC) VISIBLE,
+  INDEX `status_idx` (`Statustype_status` ASC) VISIBLE,
+  CONSTRAINT `chatid2`
+    FOREIGN KEY (`chatid`)
+    REFERENCES `mydb`.`Chat` (`chatid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `userid`
+    FOREIGN KEY (`userid`)
+    REFERENCES `mydb`.`Profile` (`userid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `status`
+    FOREIGN KEY (`Statustype_status`)
+    REFERENCES `mydb`.`Statustype` (`status`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Projectmembers`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Projectmembers` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Projectmembers` (
+  `userid` INT NOT NULL,
+  `projectid` INT NOT NULL,
+  INDEX `userid_idx` (`userid` ASC) VISIBLE,
+  INDEX `projectid_idx` (`projectid` ASC) VISIBLE,
+  CONSTRAINT `userid2`
+    FOREIGN KEY (`userid`)
+    REFERENCES `mydb`.`Profile` (`userid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `projectid`
+    FOREIGN KEY (`projectid`)
+    REFERENCES `mydb`.`Project` (`projectid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Chatmembers`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Chatmembers` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Chatmembers` (
+  `userid` INT NOT NULL,
+  `chatid` INT NOT NULL,
+  INDEX `userid_idx` (`userid` ASC) VISIBLE,
+  INDEX `chatid_idx` (`chatid` ASC) VISIBLE,
+  CONSTRAINT `userid3`
+    FOREIGN KEY (`userid`)
+    REFERENCES `mydb`.`Profile` (`userid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `chatid3`
+    FOREIGN KEY (`chatid`)
+    REFERENCES `mydb`.`Chat` (`chatid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`Project`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`Project` (`projectid`, `name`, `description`) VALUES (8800095, 'Lab4', 'Робимо 4 лабу по БД');
+INSERT INTO `mydb`.`Project` (`projectid`, `name`, `description`) VALUES (8800096, 'To do list', 'Покращення нашого гуртожитка');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`Roletype`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`Roletype` (`role`, `role_name`) VALUES (1, 'Admin');
+INSERT INTO `mydb`.`Roletype` (`role`, `role_name`) VALUES (2, 'User');
+INSERT INTO `mydb`.`Roletype` (`role`, `role_name`) VALUES (3, 'Support');
+INSERT INTO `mydb`.`Roletype` (`role`, `role_name`) VALUES (4, 'TeamLead');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`Profile`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`Profile` (`userid`, `username`, `password`, `email`, `pfp`, `Roletype_role`) VALUES (1003040, 'Тарас', 'qwerty123', 'taras_o2@gmail.com', NULL, 1);
+INSERT INTO `mydb`.`Profile` (`userid`, `username`, `password`, `email`, `pfp`, `Roletype_role`) VALUES (1003041, 'Евгеній', 'oped56', '1evgen1@ukr.net', NULL, 2);
+INSERT INTO `mydb`.`Profile` (`userid`, `username`, `password`, `email`, `pfp`, `Roletype_role`) VALUES (1003042, 'Андрій', 'ovnjd8', 'shud_andriy@gmail.com', NULL, 2);
+INSERT INTO `mydb`.`Profile` (`userid`, `username`, `password`, `email`, `pfp`, `Roletype_role`) VALUES (1003043, 'Олександр', 'KPI', 'olek_napik@gmail.com', NULL, 4);
+INSERT INTO `mydb`.`Profile` (`userid`, `username`, `password`, `email`, `pfp`, `Roletype_role`) VALUES (1003044, 'Роман', 'onelove', 'kpi_roman@gmail.com', NULL, 3);
+INSERT INTO `mydb`.`Profile` (`userid`, `username`, `password`, `email`, `pfp`, `Roletype_role`) VALUES (1003045, 'Олег', 'oleg2307', 'kezaru_235@ukr.net', NULL, 2);
+INSERT INTO `mydb`.`Profile` (`userid`, `username`, `password`, `email`, `pfp`, `Roletype_role`) VALUES (1003046, 'Тарас', 'ratas', 'pruz_taras@gmail.com', NULL, 3);
+INSERT INTO `mydb`.`Profile` (`userid`, `username`, `password`, `email`, `pfp`, `Roletype_role`) VALUES (1003047, 'Михайло', 'mikhail0984', 'mikhail5409@ukr.net', NULL, 2);
+INSERT INTO `mydb`.`Profile` (`userid`, `username`, `password`, `email`, `pfp`, `Roletype_role`) VALUES (1003048, 'Віталій', '8945102', 'vitaliy_bat@gmail.com', NULL, 2);
+INSERT INTO `mydb`.`Profile` (`userid`, `username`, `password`, `email`, `pfp`, `Roletype_role`) VALUES (1003049, 'Іван', 'mylife005', 'zluided@gmail.com', NULL, 4);
+INSERT INTO `mydb`.`Profile` (`userid`, `username`, `password`, `email`, `pfp`, `Roletype_role`) VALUES (1003050, 'Максим', '!poi85s!', 'maksimka779@ukr.net', NULL, 3);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`Chat`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`Chat` (`chatid`, `username`, `message`, `tittle`) VALUES (100491, 'Олег', 'Привіт, Олександр, як твої справи', 'Lab4_db');
+INSERT INTO `mydb`.`Chat` (`chatid`, `username`, `message`, `tittle`) VALUES (100492, 'Олександр', 'Здоровеньки були! Нормально, сам як?', 'Lab4_db');
+INSERT INTO `mydb`.`Chat` (`chatid`, `username`, `message`, `tittle`) VALUES (100493, 'Андрій', 'Хто на 5 поверху не дає спати!?!?!', 'Гуртожиток');
+INSERT INTO `mydb`.`Chat` (`chatid`, `username`, `message`, `tittle`) VALUES (100494, 'Михайло', 'Та це Іван.', 'Гуртожиток');
+INSERT INTO `mydb`.`Chat` (`chatid`, `username`, `message`, `tittle`) VALUES (100495, 'Іван', 'Та чому саме я, хоча ти и знаходишся в моєї кімнаті, але шумишь тут тільки ти', 'Гуртожиток');
+INSERT INTO `mydb`.`Chat` (`chatid`, `username`, `message`, `tittle`) VALUES (100496, 'Евгеній', 'Колбаска, хлебушек, молоко, яйця 10 шт, греча', 'Saved Messages');
+INSERT INTO `mydb`.`Chat` (`chatid`, `username`, `message`, `tittle`) VALUES (100497, 'Віталій', 'Добрий день! Не можу зайти до мого проекту, допоможіть, будь ласка.', 'Support');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`Statustype`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`Statustype` (`status`, `statusname`) VALUES (1, 'Unresolved');
+INSERT INTO `mydb`.`Statustype` (`status`, `statusname`) VALUES (2, 'Resolved');
+INSERT INTO `mydb`.`Statustype` (`status`, `statusname`) VALUES (3, 'InProgress');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`Support`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`Support` (`chatid`, `userid`, `tittle`, `description`, `Statustype_status`) VALUES (100497, 1003048, 'Проблема з доступом до проекту', 'Не має змогу зайти до свого проекту', 3);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`Projectmembers`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`Projectmembers` (`userid`, `projectid`) VALUES (1003043, 8800095);
+INSERT INTO `mydb`.`Projectmembers` (`userid`, `projectid`) VALUES (1003045, 8800095);
+INSERT INTO `mydb`.`Projectmembers` (`userid`, `projectid`) VALUES (1003042, 8800095);
+INSERT INTO `mydb`.`Projectmembers` (`userid`, `projectid`) VALUES (1003047, 8800095);
+INSERT INTO `mydb`.`Projectmembers` (`userid`, `projectid`) VALUES (1003049, 8800095);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`Chatmembers`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`Chatmembers` (`userid`, `chatid`) VALUES (1003045, 100490);
+INSERT INTO `mydb`.`Chatmembers` (`userid`, `chatid`) VALUES (1003043, 100490);
+INSERT INTO `mydb`.`Chatmembers` (`userid`, `chatid`) VALUES (1003042, 100491);
+INSERT INTO `mydb`.`Chatmembers` (`userid`, `chatid`) VALUES (1003047, 100491);
+INSERT INTO `mydb`.`Chatmembers` (`userid`, `chatid`) VALUES (1003049, 100491);
+INSERT INTO `mydb`.`Chatmembers` (`userid`, `chatid`) VALUES (1003041, 100492);
+INSERT INTO `mydb`.`Chatmembers` (`userid`, `chatid`) VALUES (1003048, 100493);
+
+COMMIT;
+
+
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Останнє оновлення:</span> <span class="time">5/15/2023, 6:09:11 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/project-management-system/design/model-scheme.html" class="prev">
+        Реляційна схема
+      </a></span> <span class="next"><a href="/project-management-system/software/RESTfull.html">
+        RESTfull сервіс для управління даними
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/project-management-system/assets/js/app.cf3ea82a.js" defer></script><script src="/project-management-system/assets/js/2.d83ff1df.js" defer></script><script src="/project-management-system/assets/js/28.8d1db9b6.js" defer></script>
+  </body>
+</html>
